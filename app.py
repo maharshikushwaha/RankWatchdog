@@ -8,10 +8,13 @@ def track_rank(url, keywords, num_results, country_code):
         for keyword in keywords:
             print(f"Keyword: {keyword}")
             query = f"{url} {keyword} country:{country_code}"
-            results = list(search(query=query, num=num_results, stop=min(num_results, 100), pause=2))
-            
+            results = search(query, num_results=num_results)
+
             for idx, result in enumerate(results, start=1):
                 print(f"{idx}. {result}")
+
+                if idx == num_results:
+                    break
 
             print("\n")
 
